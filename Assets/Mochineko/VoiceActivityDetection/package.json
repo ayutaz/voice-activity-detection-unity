@@ -1,5 +1,5 @@
 ﻿{
-  "name": "com.mochineko.voice-activity-detection",
+  "name": "com.ayutaz.voice-activity-detection",
   "version": "0.4.2",
   "displayName": "Voice Activity Detection",
   "description": "A voice activity detection library for Unity.",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:mochi-neko/voice-activity-detection-unity.git"
+    "url": "git+ssh://git@github.com:ayuta/voice-activity-detection-unity.git"
   },
   "dependencies": {
     "com.unity.logging": "1.0.16"
