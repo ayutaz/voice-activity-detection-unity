@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
-using Unity.Logging;
+using UnityEngine;
 
 namespace Mochineko.VoiceActivityDetection
 {
@@ -191,7 +191,7 @@ namespace Mochineko.VoiceActivityDetection
 
             public void Enter()
             {
-                Log.Debug("[VAD] Enter ActiveState.");
+                Debug.Log("[VAD] Enter ActiveState.");
                 chargeTimeSeconds = parent.maxChargeTimeSeconds;
                 cumulatedTimeSeconds = 0f;
                 activeTimeSeconds = 0f;
@@ -237,7 +237,7 @@ namespace Mochineko.VoiceActivityDetection
                     chargeTimeSeconds = parent.maxChargeTimeSeconds;
                 }
 
-                Log.Verbose("[VAD] Charge time: {0}, Cumulated time: {1}", chargeTimeSeconds, cumulatedTimeSeconds);
+                Debug.Log("[VAD] Charge time: " + chargeTimeSeconds + ", Cumulated time: " + cumulatedTimeSeconds);
 
                 // Finish active state
                 if (cumulatedTimeSeconds >= parent.maxCumulatedTimeSeconds
@@ -249,7 +249,7 @@ namespace Mochineko.VoiceActivityDetection
                     var isEffectiveSegments = activeTimeSeconds >= parent.minCumulatedTimeSeconds;
                     if (isEffectiveSegments)
                     {
-                        Log.Debug("[VAD] Effective segments: {0}", activeTimeSeconds);
+                        Debug.Log("[VAD] Effective segments: " + activeTimeSeconds);
                         // Write all segments in queue to buffer.
                         while (
                             queue.TryDequeue(out var dequeued)
@@ -262,7 +262,7 @@ namespace Mochineko.VoiceActivityDetection
                     else
                     {
                         // NOTE: Not effective segments are ignored.
-                        Log.Debug("[VAD] Ignored segments: {0}", activeTimeSeconds);
+                        Debug.Log("[VAD] Ignored segments: " + activeTimeSeconds);
 
                         // Clear queue
                         while (queue.TryDequeue(out var dequeued))
@@ -295,7 +295,7 @@ namespace Mochineko.VoiceActivityDetection
 
             public void Enter()
             {
-                Log.Debug("[VAD] Enter InactiveState.");
+                Debug.Log("[VAD] Enter InactiveState.");
                 parent.voiceIsActive.Value = false;
             }
 

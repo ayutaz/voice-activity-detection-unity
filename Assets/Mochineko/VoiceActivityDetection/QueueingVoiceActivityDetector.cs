@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using UniRx;
-using Unity.Logging;
+using Debug = UnityEngine.Debug;
 
 namespace Mochineko.VoiceActivityDetection
 {
@@ -151,10 +151,10 @@ namespace Mochineko.VoiceActivityDetection
             using var _ = segment;
 
             var volume = segment.Volume;
-            Log.Verbose("[VAD] Volume: {0}.", volume.ToString("F4"));
+            Debug.Log("[VAD] Volume: " + volume.ToString("F4"));
 
             var isActiveSegment = volume >= activeVolumeThreshold;
-            Log.Verbose("[VAD] Is active segment: {0}.", isActiveSegment);
+            Debug.Log("[VAD] Is active segment: " + isActiveSegment);
 
             activityQueue.Enqueue(new VoiceSegmentActivity(
                 isActiveSegment,
@@ -181,7 +181,7 @@ namespace Mochineko.VoiceActivityDetection
                 // NOTE: Change state before await.
                 this.voiceIsActive.Value = true;
 
-                Log.Info("[VAD] Voice activated.");
+                Debug.Log("[VAD] Voice activated.");
                 await this.buffer.OnVoiceActiveAsync(cancellationToken);
 
                 // Write buffers of segments that are buffered while inactive state just before activation.
@@ -206,7 +206,7 @@ namespace Mochineko.VoiceActivityDetection
                 // NOTE: Change state before await.
                 this.voiceIsActive.Value = false;
 
-                Log.Info("[VAD] Voice inactivated.");
+                Debug.Log("[VAD] Voice inactivated.");
                 await this.buffer.OnVoiceInactiveAsync(cancellationToken);
                 intervalStopwatch.Restart();
                 return;

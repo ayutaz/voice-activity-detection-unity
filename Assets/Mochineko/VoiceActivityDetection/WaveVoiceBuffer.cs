@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NAudio.Wave;
-using Unity.Logging;
+using UnityEngine;
 
 namespace Mochineko.VoiceActivityDetection
 {
@@ -78,7 +78,7 @@ namespace Mochineko.VoiceActivityDetection
             lock (lockObject)
             {
                 sizeCounter += segment.Length;
-                Log.Verbose("[VAD] Write {0} / {1} samples to wave stream.", segment.Length, sizeCounter);
+                Debug.Log($"[VAD] Write {segment.Length} / {sizeCounter} samples to wave stream.");
                 writer.WriteSamples(segment.Buffer, offset: 0, segment.Length);
             }
 

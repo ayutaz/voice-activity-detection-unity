@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using UniRx;
-using Unity.Logging;
 using UnityEngine;
 
 namespace Mochineko.VoiceActivityDetection.Components
@@ -86,7 +85,7 @@ namespace Mochineko.VoiceActivityDetection.Components
         {
             if (echo && echoAudioSource == null)
             {
-                Log.Error("[VAD.Component] Echo is enabled but AudioSource is not attached.");
+                Debug.LogError("[VAD.Component] Echo is enabled but AudioSource is not attached.");
                 throw new NullReferenceException(nameof(echoAudioSource));
             }
 
@@ -109,7 +108,7 @@ namespace Mochineko.VoiceActivityDetection.Components
                 .VoiceIsActive
                 .Subscribe(isActive =>
                 {
-                    Log.Debug("[VAD.Component] Change voice activity: {0}", isActive);
+                    Debug.Log("[VAD.Component] Change voice activity: " + isActive);
                     this.isActive.Value = isActive;
                     onActive.Invoke(isActive);
                 })
@@ -151,7 +150,7 @@ namespace Mochineko.VoiceActivityDetection.Components
                 case SourceType.AudioSource:
                     if (GetComponent<AudioSource>() == null)
                     {
-                        Log.Error("[VAD.Component] Voice source is AudioSource but is not attached.");
+                        Debug.LogError("[VAD.Component] Voice source is AudioSource but is not attached.");
                         throw new NullReferenceException(nameof(AudioSource));
                     }
 
@@ -184,7 +183,7 @@ namespace Mochineko.VoiceActivityDetection.Components
                         .OnVoiceInactive
                         .Subscribe(clip =>
                         {
-                            Log.Debug("[VAD.Component] Publish AudioClip of buffered voice.");
+                            Debug.Log("[VAD.Component] Publish AudioClip of buffered voice.");
                             onActiveAudioClip.Invoke(clip);
 
                             PlayEchoAudioClip(clip);
@@ -247,7 +246,7 @@ namespace Mochineko.VoiceActivityDetection.Components
                 return;
             }
 
-            Log.Debug("[VAD.Component] Play echo AudioClip of buffered voice.");
+            Debug.Log("[VAD.Component] Play echo AudioClip of buffered voice.");
             echoAudioSource.Stop();
             echoAudioSource.clip = clip;
             echoAudioSource.Play();
@@ -255,7 +254,7 @@ namespace Mochineko.VoiceActivityDetection.Components
 
         void IWaveStreamReceiver.OnReceive(Stream stream)
         {
-            Log.Debug("[VAD.Component] Publish WaveStream of buffered voice.");
+            Debug.Log("[VAD.Component] Publish WaveStream of buffered voice.");
             onActiveWaveStreamSubject.OnNext(stream);
             onActiveWaveStream.Invoke(stream);
         }
