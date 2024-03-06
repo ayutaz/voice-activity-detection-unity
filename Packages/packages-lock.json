@@ -49,7 +49,7 @@
       "hash": "284d5c50d3f1ddd9fa7df3d382ea904732a9c2ff"
     },
     "com.unity.ai.navigation": {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -58,7 +58,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.8",
+      "version": "1.8.11",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -68,7 +68,7 @@
     },
     "com.unity.collections": {
       "version": "2.1.4",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.8.4",
@@ -96,8 +96,8 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.ide.visualstudio": "2.0.18",
-        "com.unity.ide.rider": "3.0.24",
+        "com.unity.ide.visualstudio": "2.0.22",
+        "com.unity.ide.rider": "3.0.27",
         "com.unity.ide.vscode": "1.2.5",
         "com.unity.editorcoroutines": "1.0.0",
         "com.unity.performance.profile-analyzer": "1.2.2",
@@ -106,7 +106,7 @@
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.24",
+      "version": "3.0.27",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -115,7 +115,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.18",
+      "version": "2.0.22",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -140,11 +140,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.logging": {
-      "version": "1.0.16",
-      "depth": 0,
+      "version": "1.0.11",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.burst": "1.8.8",
+        "com.unity.burst": "1.8.4",
         "com.unity.collections": "2.1.4"
       },
       "url": "https://packages.unity.com"
@@ -158,7 +158,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
-      "depth": 2,
+      "depth": 3,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
