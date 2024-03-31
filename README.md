@@ -31,7 +31,7 @@ Add following dependencies to your `/Packages/manifest.json`.
 ```json
 {
     "dependencies": {
-        "com.ayutaz.voice-activity-detection": "https://github.com/ayutaz/voice-activity-detection-unity.git?path=/Assets/Mochineko/VoiceActivityDetection#v0.5.1",
+        "com.ayutaz.voice-activity-detection": "https://github.com/ayutaz/voice-activity-detection-unity.git?path=/Assets/Mochineko/VoiceActivityDetection#v0.5.0",
         "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
         "com.neuecc.unirx": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts",
         "com.naudio.core": "https://github.com/mochi-neko/simple-audio-codec-unity.git?path=/Assets/NAudio/NAudio.Core#0.2.0",
